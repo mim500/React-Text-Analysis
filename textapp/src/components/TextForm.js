@@ -20,6 +20,15 @@ export default function TextForm(props) {
         setText(newText);
     }
     
+    //copy text from textBox
+    const copyText = () =>{
+        let text = document.getElementById("myBox");
+        text.select();
+        // text.setSelectorRange(0,9000);
+        navigator.clipboard.writeText(text.value);
+        alert("Copied");
+    }
+
     // update the text area
     const handleOnChange = (event) => {
         setText(event.target.value);
@@ -46,6 +55,7 @@ export default function TextForm(props) {
         <button className="btn btn-primary my-3 mx-2" onClick={toUpper} >Convert To UpperCase</button>
         <button className="btn btn-primary my-3 mx-2" onClick={toLower} >Convert To LowerCase</button>
         <button className="btn btn-primary my-3 mx-2" onClick={clearArea} >Clear Text Area</button>
+        <button className="btn btn-primary my-3 mx-2" onClick={copyText} >Copy Text</button>
       </div>
     </div>
       <div className="container my-3">
