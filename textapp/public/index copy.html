@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+ 'use strict';
+  let a = 10;
+  console.log(a);
+
+  function hello(){
+    console.log("Hello Nisha")
+  }
+  let obj = {
+    r:43,
+    g:33,
+    
+  }
+  document.addEventListener("click",function click(){
+    console.log("clicked");
+    let conf  = confirm("Are you sure");
+    console.log(conf)
+    if(conf==true){
+      document.write("Welcome");
+    }
+    else{
+      document.write("Thanks")
+    }
+  })
+console.log(this)
+
+  // function myfunc(number){
+  //     console.log("the numner is: " + this);
+  //   }
+
+
+  let mobj ={
+    a:this,
+    myfuc : function(number){
+      console.log(this);
+    }
+  }
+  mobj.myfuc();
+console.log(mobj.a);
+setTimeout(()=>{
+  console.log("yayaya");
+},3000);
+    console.log("test again");
+</script>
+<body>
+  Hello
+</body>
+</html>
