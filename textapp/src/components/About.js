@@ -1,36 +1,16 @@
-import React,{useState} from 'react'
+import React from 'react'
 
 export default function About(props) {
-  const [myStyle, setmyStyle] = useState({
-    color:'black',
-    backgroundColor: "white"
-  })
+ 
+let myStyle ={
+  color: props.mode === "dark"?"white":"#05304e",
+  backgroundColor: props.mode === "dark"? "#05304e":"white"
 
-  const [btnText, setbtnText] = useState("Enable White Mode");
-
-
-
-//toogleStyle button
-const toogleStyle = () =>{
-  if(myStyle.color  === 'white'){
-    setmyStyle({
-      color: "black",
-      backgroundColor: "white"
-    })
-    setbtnText("Enable Dark Mode");
-  }
-  else{
-    setmyStyle({
-      color: "white",
-      backgroundColor: "black"
-    })
-    setbtnText("Enable Light Mode");
-  }
 }
 
     return (
         <>
-        <div className="container" style={myStyle}>
+        <div className="container" style={{color: props.mode === "dark"?"white":"#42743"}}>
         <div className="accordion" id="accordionPanelsStayOpenExample" style={myStyle}> 
   <div className="accordion-item">
     <h2 className="accordion-header" id="panelsStayOpen-headingOne">
@@ -69,13 +49,6 @@ const toogleStyle = () =>{
     </div>
   </div>
 </div>
-
-</div>
-
-{/* ==== Dark Button Toggle ==== */}
-<div className="container">
-<button onClick={toogleStyle} className="btn btn-danger my-2 my-sm-0" type="submit">{btnText}</button>
-
 
 </div>
  </>

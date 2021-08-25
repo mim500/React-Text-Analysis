@@ -29,7 +29,8 @@ export default function TextForm(props) {
         text.select();
         // text.setSelectorRange(0,9000);
         navigator.clipboard.writeText(text.value);
-        props.showAlert("Copied","sucess")
+        document.getSelection().removeAllRanges();
+        props.showAlert("Copied","sucess");
     }
 
     // update the text area
@@ -61,22 +62,22 @@ export default function TextForm(props) {
     <div className="mb-3">
         <h2 className="text-center">{props.heading}</h2>
         <p id="text-limit" className="badge bg-light text-wrap text-primary">Character Remaining: {char_remain}</p>
-        <textarea className="form-control"  onChange={handleOnChange} style={{backgroundColor:  props.mode==='dark'?'gray':'white',color: props.mode==='dark'?'white':'#05304e'}} value={text} id="myBox" rows="8"></textarea>
-        <button className="btn btn-primary my-3 mx-2" onClick={toUpper} >Convert To UpperCase</button>
-        <button className="btn btn-primary my-3 mx-2" onClick={toLower} >Convert To LowerCase</button>
-        <button className="btn btn-primary my-3 mx-2" onClick={clearArea} >Clear Text Area</button>
-        <button className="btn btn-primary my-3 mx-2" onClick={copyText} >Copy Text</button>
-        <button className="btn btn-primary my-3 mx-2" onClick={removeSpace}>Remove Space</button>
-        <button className="btn btn-primary my-3 mx-2">Replace Worlds</button>
+        <textarea className="form-control"  onChange={handleOnChange} style={{backgroundColor:  props.mode==='dark'?'darkblue':'white',color: props.mode==='dark'?'white':'#05304e'}} value={text} id="myBox" rows="8"></textarea>
+        <button className="btn btn-primary my-3 mx-2" disabled={text.length===0} onClick={toUpper} >Convert To UpperCase</button>
+        <button className="btn btn-primary my-3 mx-2" disabled={text.length===0} onClick={toLower} >Convert To LowerCase</button>
+        <button className="btn btn-primary my-3 mx-2" disabled={text.length===0} onClick={clearArea} >Clear Text Area</button>
+        <button className="btn btn-primary my-3 mx-2" disabled={text.length===0} onClick={copyText} >Copy Text</button>
+        <button className="btn btn-primary my-3 mx-2" disabled={text.length===0}onClick={removeSpace}>Remove Space</button>
+        <button className="btn btn-primary my-3 mx-2" disabled={text.length===0}>Replace Worlds</button>
       </div>
     </div>
       <div className="container my-3" style={{color: props.mode==='dark'?'white':'#05304e'}}>
           <h2>Your Text Summery</h2>
-          <p className="text-end">Total {text.split(" ").length} Words and Character: {text.length}</p>
-          <p>Time Need: {text.split("").length*0.008}</p>
+          <p className="text-end">Total {text.split(" ").filter((element)=>{return element.length !==0}).length} Words and Character: {text.length}</p>
+          <p>Time Need: {text.split(" ").filter((element)=>{return element.length !==0}).length*0.008}</p>
           {/* <h5></h5> */}
           <p className="text-center">Preview:</p>
-          <h6 id="size">{text.length>0 ? text : "Enter Text"}</h6>
+          <h6 id="size">{text.length>0 ? text : "Nothing To Preview"}</h6>
 </div>
 
 </>

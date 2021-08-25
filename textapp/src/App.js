@@ -35,7 +35,7 @@ function App() {
   const toogleMode = (color) =>{
     if(mode==="light"){
       setMode("dark");
-      document.body.style.backgroundColor  = '#05304e';
+      document.body.style.backgroundColor  = '#042743';
       showAlert("Dark Mode Enable","sucess")
       // setInterval(() => {
       //   document.title = "Text Utils - Light Mode"
@@ -64,7 +64,7 @@ function App() {
             <ContactUS mode={mode}/>
           </Route>
           <Route exact path="/About">
-            <About aboutText="About"/>
+            <About aboutText="About" mode={mode}/>
           </Route>
           <Route exact path="/">
           <TextForm showAlert={showAlert} heading="Enter Text For Analysis" mode={mode}/>
