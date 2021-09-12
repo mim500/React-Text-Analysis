@@ -25,9 +25,6 @@ export default function TextForm(props) {
     
     //copy text from textBox
     const copyText = () =>{
-        let text = document.getElementById("myBox");
-        text.select();
-        // text.setSelectorRange(0,9000);
         navigator.clipboard.writeText(text.value);
         document.getSelection().removeAllRanges();
         props.showAlert("Copied","sucess");
@@ -73,7 +70,7 @@ export default function TextForm(props) {
     </div>
       <div className="container my-3" style={{color: props.mode==='dark'?'white':'#05304e'}}>
           <h2>Your Text Summery</h2>
-          <p className="text-end">Total {text.split(" ").filter((element)=>{return element.length !==0}).length} Words and Character: {text.length}</p>
+          <p className="text-end">Total {text.split(/\s+/).filter((element)=>{return element.length !==0}).length} Words and Character: {text.length}</p>
           <p>Time Need: {text.split(" ").filter((element)=>{return element.length !==0}).length*0.008}</p>
           {/* <h5></h5> */}
           <p className="text-center">Preview:</p>

@@ -5,6 +5,7 @@ import About from './components/About';
 import React, { useState } from 'react'
 import Alert from './components/Alert';
 import ContactUS from './components/ContactUS';
+
 //router 
 import {
   BrowserRouter as Router,
@@ -23,7 +24,7 @@ function App() {
   const showAlert = (messege,type) =>{
     setAlert({
       msg : messege,
-      type: type
+      type: type,
     })
     // 
     setTimeout(() => {
@@ -32,17 +33,43 @@ function App() {
   }
 
   //toogleMode
-  const toogleMode = (color) =>{
+  // const toogleMode = (color) =>{
+  //   if(mode==="light"){
+  //     setMode("dark");
+  //     document.body.style.backgroundColor  = '#042743';
+  //     showAlert("Dark Mode Enable","sucess")
+  //     // setInterval(() => {
+  //     //   document.title = "Text Utils - Light Mode"
+  //     // }, 1500);
+  //     // setInterval(() => {
+  //     //   document.title = "Text Utils - Dark Mode"
+  //     // }, 2000);
+  //   }
+  //   else{
+  //     setMode("light");
+  //     document.body.style.backgroundColor  = 'white';
+  //     showAlert("Light Mode Enable","sucess")
+  //   }
+  // }
+
+//remove bg color plate 
+const remobeveBgColor = () =>{
+  document.body.classList.remove('bg-primary')
+  document.body.classList.remove('bg-danger')
+  document.body.classList.remove('bg-success')
+  document.body.classList.remove('bg-warning')
+  document.body.classList.remove('bg-dark') 
+}
+
+//platemode
+const toogleMode = (cls) =>{
+  remobeveBgColor()
+  document.body.classList.add("bg-"+ cls);
+  showAlert("Changed To "+cls, "sucess");
     if(mode==="light"){
       setMode("dark");
       document.body.style.backgroundColor  = '#042743';
-      showAlert("Dark Mode Enable","sucess")
-      // setInterval(() => {
-      //   document.title = "Text Utils - Light Mode"
-      // }, 1500);
-      // setInterval(() => {
-      //   document.title = "Text Utils - Dark Mode"
-      // }, 2000);
+      showAlert("Changed To "+ cls,"sucess")
     }
     else{
       setMode("light");
